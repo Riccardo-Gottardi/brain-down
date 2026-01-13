@@ -43,7 +43,7 @@ For the above reasons I have decided to develop my own software for schematizing
 | 0.1.0 | File handling | File operation: creation/renaming/deletion, File display |
 | 0.1.1 | Vault handling | Vault represented by a name, Vault operation: creation/renaming/deletion, Set a default vault, Switch between Vault |
 | 0.1.2 | Folder handling | Folder operation: creation/deletion, File movement |
-| 0.1.3 | Deployment | Create installation script and docker image |
+| 0.1.3 | Project replicability | Create a script for project setup and docker image to allow others to test the software |
 | 0.2.0 | Notes | Sticky notes based schema creation, Elements added: sticky note nodes, connections |
 | 0.2.1 | Media library | Integration of openly available multimedia library to add icons, images and other type of media to the schemas |
 | 0.2.2 | Mind-map | Mind-map node creation, Elements added: mind-map node|
