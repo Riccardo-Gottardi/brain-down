@@ -1,0 +1,515 @@
+/* =============================================================================
+   Brain-down Global Styles
+   Theme: Calm Focus - Soft blue tones for relaxation and concentration
+   ============================================================================= */
+
+/* -----------------------------------------------------------------------------
+   CSS Reset
+   ----------------------------------------------------------------------------- */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* -----------------------------------------------------------------------------
+   Theme Variables - Calm Focus Palette
+   ----------------------------------------------------------------------------- */
+
+:root {
+  /* Background Gradient Colors */
+  --gradient-start: #e6f2fa;      /* Sky Mist */
+  --gradient-mid1: #d0e4f5;       /* Soft Cloud */
+  --gradient-mid2: #c8dff2;       /* Calm Blue */
+  --gradient-end: #d5e6f5;        /* Serene */
+  
+  /* Main Background Gradient */
+  --bg-gradient: linear-gradient(160deg, 
+    var(--gradient-start) 0%, 
+    var(--gradient-mid1) 30%, 
+    var(--gradient-mid2) 60%, 
+    var(--gradient-end) 100%
+  );
+
+  /* Glass Effects */
+  --glass-panel: rgba(255, 255, 255, 0.5);
+  --glass-card: rgba(255, 255, 255, 0.75);
+  --glass-blur: blur(20px);
+  --glass-blur-light: blur(10px);
+  
+  /* Glass Borders (inset box-shadow) */
+  --glass-border: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+  --glass-border-strong: inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+  
+  /* Primary Accent Colors */
+  --accent: #4a9fd4;              /* Focus Blue */
+  --accent-light: #5eb8e8;        /* Light Accent */
+  --accent-deep: #3a8cc4;         /* Deep Accent */
+  --accent-bg: rgba(74, 159, 212, 0.1);
+  --accent-bg-strong: rgba(74, 159, 212, 0.15);
+  
+  /* Text Colors */
+  --text-primary: #2d3a5c;        /* Navy Text */
+  --text-secondary: #5a7a9a;      /* Muted Text */
+  --text-subtle: #8fa8c2;         /* Subtle Text */
+  --text-on-accent: #ffffff;      /* Text on accent backgrounds */
+  
+  /* Status Colors */
+  --success: #4abe8a;
+  --success-bg: rgba(74, 190, 138, 0.15);
+  --alert: #e86a6a;
+  --alert-bg: rgba(232, 106, 106, 0.15);
+  --alert-border: rgba(232, 106, 106, 0.3);
+  --alert-dark: #c54a4a;
+  
+  /* Shadows (Blue-tinted) */
+  --shadow-panel: 0 8px 32px rgba(100, 140, 180, 0.08);
+  --shadow-panel-hover: 0 12px 40px rgba(100, 140, 180, 0.12);
+  --shadow-card: 0 4px 20px rgba(100, 150, 200, 0.06);
+  --shadow-dropdown: 0 12px 40px rgba(100, 140, 180, 0.2);
+  --shadow-button: 0 4px 12px rgba(45, 58, 92, 0.3);
+  --shadow-button-hover: 0 6px 16px rgba(58, 140, 196, 0.4);
+  
+  /* Border Colors */
+  --border-light: rgba(90, 122, 154, 0.2);
+  --border-medium: rgba(90, 122, 154, 0.3);
+  
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+  
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  
+  /* Font Families */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'SF Mono', Consolas, 'Liberation Mono', Menlo, monospace;
+  
+  /* Transitions */
+  --transition-fast: 0.1s ease;
+  --transition-normal: 0.15s ease;
+  --transition-smooth: 0.2s ease;
+}
+
+/* -----------------------------------------------------------------------------
+   Base Styles
+   ----------------------------------------------------------------------------- */
+
+html {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  color: var(--text-primary);
+}
+
+body {
+  overflow: hidden;
+  background: var(--bg-gradient);
+}
+
+/* Focus styles */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Selection */
+::selection {
+  background: var(--accent-bg-strong);
+  color: var(--text-primary);
+}
+
+/* -----------------------------------------------------------------------------
+   Scrollbar Styling
+   ----------------------------------------------------------------------------- */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(90, 122, 154, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(90, 122, 154, 0.35);
+}
+
+/* -----------------------------------------------------------------------------
+   Typography
+   ----------------------------------------------------------------------------- */
+
+h1 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text-primary);
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--text-primary);
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* -----------------------------------------------------------------------------
+   Glass Panel Component
+   ----------------------------------------------------------------------------- */
+
+.glass-panel {
+  background: var(--glass-panel);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-panel), var(--glass-border);
+}
+
+.glass-panel-xl {
+  background: var(--glass-panel);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-panel), var(--glass-border);
+}
+
+.glass-card {
+  background: var(--glass-card);
+  backdrop-filter: var(--glass-blur-light);
+  -webkit-backdrop-filter: var(--glass-blur-light);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card), var(--glass-border-strong);
+}
+
+/* -----------------------------------------------------------------------------
+   Button Components
+   ----------------------------------------------------------------------------- */
+
+/* Base button reset */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding: 0.625rem 1rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background var(--transition-normal), 
+              transform var(--transition-fast),
+              box-shadow var(--transition-normal);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+/* Primary button (accent color) */
+.btn-primary {
+  background: var(--accent-deep);
+  color: var(--text-on-accent);
+  border: none;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--accent);
+}
+
+/* Secondary button (glass style) */
+.btn-secondary {
+  background: var(--glass-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border-light);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: var(--border-medium);
+}
+
+/* Ghost button (text only) */
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  border: none;
+  padding: 0.5rem;
+}
+
+.btn-ghost:hover:not(:disabled) {
+  background: var(--accent-bg);
+  color: var(--accent);
+}
+
+/* Icon button (circular) */
+.btn-icon {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-subtle);
+  border: none;
+}
+
+.btn-icon:hover:not(:disabled) {
+  background: var(--accent-bg);
+  color: var(--accent);
+}
+
+/* Circular accent button (like the + button) */
+.btn-circle {
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border-radius: var(--radius-full);
+  background: var(--text-primary);
+  color: var(--text-on-accent);
+  border: none;
+  box-shadow: var(--shadow-button);
+}
+
+.btn-circle:hover:not(:disabled) {
+  background: var(--accent-deep);
+  box-shadow: var(--shadow-button-hover);
+}
+
+/* Text button (link style) */
+.btn-text {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 0.875rem;
+  padding: 0;
+  transition: color var(--transition-normal);
+}
+
+.btn-text:hover {
+  color: var(--accent);
+}
+
+/* Danger button */
+.btn-danger {
+  color: var(--alert);
+}
+
+.btn-danger:hover:not(:disabled) {
+  background: var(--alert-bg);
+}
+
+/* -----------------------------------------------------------------------------
+   Input Components
+   ----------------------------------------------------------------------------- */
+
+.input {
+  padding: 0.625rem 1rem;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--text-primary);
+  font-size: 0.9375rem;
+  transition: border-color var(--transition-normal), 
+              box-shadow var(--transition-normal);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-bg);
+}
+
+.input::placeholder {
+  color: var(--text-subtle);
+}
+
+/* -----------------------------------------------------------------------------
+   Dropdown Menu Component
+   ----------------------------------------------------------------------------- */
+
+.dropdown-menu {
+  position: absolute;
+  min-width: 160px;
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--shadow-dropdown), var(--glass-border-strong);
+  animation: dropdown-fade-in 0.15s ease-out;
+}
+
+@keyframes dropdown-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.625rem 0.875rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  cursor: pointer;
+  text-align: left;
+  transition: background var(--transition-normal);
+}
+
+.dropdown-item:hover {
+  background: var(--accent-bg);
+}
+
+.dropdown-item.danger {
+  color: var(--alert);
+}
+
+.dropdown-item.danger:hover {
+  background: var(--alert-bg);
+}
+
+.dropdown-item svg {
+  flex-shrink: 0;
+}
+
+/* -----------------------------------------------------------------------------
+   Alert / Banner Components
+   ----------------------------------------------------------------------------- */
+
+.alert {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+}
+
+.alert-error {
+  background: var(--alert-bg);
+  border: 1px solid var(--alert-border);
+  color: var(--alert-dark);
+}
+
+.alert-success {
+  background: var(--success-bg);
+  border: 1px solid rgba(74, 190, 138, 0.3);
+  color: #2d8a5e;
+}
+
+/* -----------------------------------------------------------------------------
+   Loading Spinner
+   ----------------------------------------------------------------------------- */
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--accent-bg);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { 
+    transform: rotate(360deg); 
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   Utility Classes
+   ----------------------------------------------------------------------------- */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-subtle { color: var(--text-subtle); }
+.text-accent { color: var(--accent); }
+.text-danger { color: var(--alert); }

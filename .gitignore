@@ -1,0 +1,13 @@
+.DS_Store
+node_modules
+/brain-down/build
+/brain-down/.svelte-kit
+/brain-down/.vscode
+/package
+.env
+.env.*
+!.env.example
+/brain-down/vite.config.js.timestamp-*
+/brain-down/vite.config.ts.timestamp-*
+
+tmp/
