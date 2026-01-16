@@ -1,4 +1,4 @@
-![brain-down banner](banner.png)
+![brain-down banner](banner.jpg)
 
 # What is it ?
 Brain-down is an open-source software to:
@@ -16,7 +16,7 @@ It is designed aiming to create a tool that provide visual support to the reason
 <br/>
 
 # How to get it
-\<Place holder: this section will be filled in accordance with the development of the Deployment feature, take a look to section [Road map](#road-map)\>
+\<Place holder: this section will be filled in accordance with the development of the Project replicability, take a look to section [Road map](#road-map)\>
 
 <br/>
 <br/>
@@ -43,7 +43,7 @@ For the above reasons I have decided to develop my own software for schematizing
 | 0.1.0 | File handling | File operation: creation/renaming/deletion, File display |
 | 0.2.0 | Vault handling | Vault represented by a name, Vault operation: creation/renaming/deletion, Set a default vault, Switch between Vault |
 | 0.3.0 | Folder handling | Folder operation: creation/deletion, File movement |
-| 0.4.0 | Project replicability | Create a script for project setup and docker image to allow others to test the software |
+| 0.4.0 | Project replicability | Create a script, for easy project setup, and a docker image to allow others to test the software |
 | 0.5.0 | Notes | Sticky notes based schema creation, Elements added: sticky note nodes, connections |
 | 0.6.0 | Media library | Integration of openly available multimedia library to add icons, images and other type of media to the schemas |
 | 0.7.0 | Mind-map | Mind-map node creation, Elements added: mind-map node|
@@ -52,6 +52,8 @@ For the above reasons I have decided to develop my own software for schematizing
 | 0.10.0 | Export to image | Ability to export the created schemas with image format |
 | 0.11.0 | Export to pdf | Ability to export the created schemas with pdf format |
 | 1.0.0 | First stable version | Every functionality tested and ready to be used by everyone|
+| ... | ... | ... |
+| 2.0.0 | AFFiNE Integration | Development of an [AFFiNE](https://affine.pro/) integration to integrate brain-down schemas into it |
 
 <br/>
 <br/>
