@@ -7,7 +7,7 @@
 export * from './types';
 
 // Stores
-export { vaultStore, hasVault, vaultName } from './vaultStore';
+export { vaultStore, activeVault, defaultVault, hasVaults, hasVault, vaultName, vaultPath } from './vaultStore';
 export type { VaultState } from './vaultStore';
 
 export { mapStore, nodes, edges, viewport, hasMap } from './mapStore';

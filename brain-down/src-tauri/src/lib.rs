@@ -18,6 +18,10 @@ use commands::{
     delete_map_file,
     rename_map_file,
     file_exists,
+    // Config commands
+    load_config,
+    save_config,
+    check_vault_accessible,
 };
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
@@ -38,6 +42,10 @@ pub fn run() {
             delete_map_file,
             rename_map_file,
             file_exists,
+            // Config commands
+            load_config,
+            save_config,
+            check_vault_accessible,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

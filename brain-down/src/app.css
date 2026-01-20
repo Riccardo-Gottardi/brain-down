@@ -59,6 +59,7 @@ p, h1, h2, h3, h4, h5, h6 {
   /* Glass Effects */
   --glass-panel: rgba(255, 255, 255, 0.5);
   --glass-card: rgba(255, 255, 255, 0.75);
+  --glass-page: rgba(255, 255, 255, 0.9);
   --glass-blur: blur(20px);
   --glass-blur-light: blur(10px);
   
@@ -310,6 +311,10 @@ a:hover {
   background: transparent;
   color: var(--text-subtle);
   border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-icon:hover:not(:disabled) {
@@ -391,9 +396,10 @@ a:hover {
 .dropdown-menu {
   position: absolute;
   min-width: 160px;
+  width: max-content;
   padding: var(--spacing-sm);
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--glass-page);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
   box-shadow: var(--shadow-dropdown), var(--glass-border-strong);
@@ -424,6 +430,7 @@ a:hover {
   font-size: 0.875rem;
   cursor: pointer;
   text-align: left;
+  white-space: nowrap;
   transition: background var(--transition-normal);
 }
 

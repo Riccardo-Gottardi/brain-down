@@ -50,10 +50,12 @@ For the above reasons I have decided to develop my own software for schematizing
 | 0.8.0 | Mathematical formulas rendering | [Typst](https://typst.app/) based mathematical scripting |
 | 0.9.0 | Code rendering | Dedicated styling display/rendering rules will be defined for code snippet |
 | 0.10.0 | Export to image | Ability to export the created schemas with image format |
-| 0.11.0 | Export to pdf | Ability to export the created schemas with pdf format |
+| 0.11.0 | Export to OPML | Ability to export the created schemas with OPML format |
+| 0.12.0 | Export to pdf | Ability to export the created schemas with pdf format |
 | 1.0.0 | First stable version | Every functionality tested and ready to be used by everyone|
 | ... | ... | ... |
-| 2.0.0 | AFFiNE Integration | Development of an [AFFiNE](https://affine.pro/) integration to integrate brain-down schemas into it |
+| 1.1.0 | AnyType embed | Provide an embeddings for AnyType, to smartly display the maps, without having to load the pdf (referencing the file)
+| 1.2.0 | AFFiNE Integration | Development of an [AFFiNE](https://affine.pro/) integration to integrate brain-down schemas into it |
 
 <br/>
 <br/>

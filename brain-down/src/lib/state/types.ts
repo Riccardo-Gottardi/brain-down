@@ -1,6 +1,6 @@
 // =============================================================================
 // Brain-down Data Model Types
-// Based on MVP specification v0.1.0
+// Based on MVP specification v0.2.0
 // =============================================================================
 
 // -----------------------------------------------------------------------------
@@ -127,4 +127,39 @@ export interface FileEntry {
   name: string;
   path: string;
   modifiedAt: string;
+}
+
+// -----------------------------------------------------------------------------
+// Vault Configuration Types (v0.2.0)
+// -----------------------------------------------------------------------------
+
+/** A single vault entry with name-to-path mapping */
+export interface VaultEntry {
+  id: string;        // UUID v4
+  name: string;      // User-friendly name, unique (case-insensitive)
+  path: string;      // Filesystem path, unique
+}
+
+/** Application-wide configuration persisted to disk */
+export interface AppConfig {
+  vaults: VaultEntry[];  // Ordered list, index 0 = default vault
+}
+
+/** Result of a validation operation */
+export interface ValidationResult {
+  valid: boolean;
+  error?: string;
+}
+
+// -----------------------------------------------------------------------------
+// Toast Notification Types (v0.2.0)
+// -----------------------------------------------------------------------------
+
+export type ToastType = 'info' | 'success' | 'warning' | 'error';
+
+export interface Toast {
+  id: string;
+  type: ToastType;
+  message: string;
+  duration: number;  // milliseconds, 0 = persistent
 }
