@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
-  import { vaultStore, hasVault, activeVault, hasVaults } from '$lib/state';
+  import { vaultStore, hasVault, activeVault, hasVaults, toastStore } from '$lib/state';
   import { confirmAction } from '$lib/io/vault';
   import { createMapFile, deleteMapFile, renameMapFile } from '$lib/io/fileCommands';
   import { getVaultFiles } from '$lib/io/vault';
@@ -38,12 +38,17 @@
     try {
       const result = await vaultStore.initialize();
       
-      // TODO: Show toast if fallback was used
+      // Show toast if fallback was used
       if (result.usedFallback && result.fallbackVaultName) {
-        console.log(`Fallback: Using vault "${result.fallbackVaultName}"`);
+        toastStore.warning(
+          `Default vault unavailable. Using "${result.fallbackVaultName}" instead.`
+        );
       }
     } catch (error) {
-      console.error('Failed to initialize vault:', error);
+      toastStore.error(
+        `Failed to initialize vault:\n"${error}"`
+      )
+      console.error('', error);
     } finally {
       isLoadingVault = false;
     }
@@ -307,14 +312,14 @@
             {/if}
           </div>
         </header>
-
+<!--
         {#if $vaultStore.error}
           <div class="alert alert-error">
             <span>{$vaultStore.error}</span>
             <button class="btn-ghost" onclick={() => vaultStore.clearError()}>✕</button>
           </div>
         {/if}
-
+-->
         {#if isCreatingNew}
           <div class="new-file-form glass-card">
             <input

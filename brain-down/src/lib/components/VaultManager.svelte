@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { confirmAction } from '$lib/io/vault';
   import { vaultStore } from '$lib/state';
   import type { VaultEntry } from '$lib/state/types';
   import VaultEntryRow from './VaultEntryRow.svelte';
@@ -9,8 +10,7 @@
   // -----------------------------------------------------------------------------
 
   // Dialog state - only create and delete now (rename/modifyPath are inline)
-  let dialogMode = $state<'create' | 'delete' | null>(null);
-  let selectedVault = $state<VaultEntry | null>(null);
+  let dialogMode = $state<'create' | null>(null);
 
   // Error state for operations
   let operationError = $state<string | null>(null);
@@ -37,19 +37,28 @@
     }
   }
 
-  function handleDelete(vault: VaultEntry) {
-    selectedVault = vault;
-    dialogMode = 'delete';
+  async function handleDelete(vault: VaultEntry) {
+    const confirmed = await confirmAction(
+      `Remove "${vault.name}" from Brain-down?\n\nYour files will remain in:\n${vault.path}`,
+      'Remove Vault'
+    );
+    
+    if (!confirmed) return;
+    
+    operationError = null;
+    try {
+      await vaultStore.deleteVault(vault.id);
+    } catch (e) {
+      operationError = `Failed to remove vault: ${e}`;
+    }
   }
 
   function handleAddVault() {
-    selectedVault = null;
     dialogMode = 'create';
   }
 
   function closeDialog() {
     dialogMode = null;
-    selectedVault = null;
   }
 
   function clearError() {
@@ -113,19 +122,6 @@
       onconfirm={closeDialog}
       oncancel={closeDialog}
     />
-  {/if}
-
-  <!-- Delete Confirmation Dialog (placeholder for Step 7) -->
-  {#if dialogMode === 'delete' && selectedVault}
-    <div class="dialog-placeholder">
-      <div class="placeholder-content">
-        <p>Delete vault confirmation (Step 7)</p>
-        <p class="text-secondary">Vault: {selectedVault.name}</p>
-        <div class="placeholder-actions">
-          <button class="btn btn-secondary" onclick={closeDialog}>Cancel</button>
-        </div>
-      </div>
-    </div>
   {/if}
 </div>
 
@@ -216,37 +212,4 @@
     margin-top: var(--spacing-lg);
   }
 
-  /* ---------------------------------------------------------------------------
-     Dialog Placeholder (temporary for Step 7)
-     --------------------------------------------------------------------------- */
-
-  .dialog-placeholder {
-    position: fixed;
-    inset: 0;
-    z-index: 200;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(45, 58, 92, 0.4);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-  }
-
-  .placeholder-content {
-    background: var(--glass-page, rgba(255, 255, 255, 0.95));
-    padding: var(--spacing-xl);
-    border-radius: var(--radius-lg);
-    text-align: center;
-    box-shadow: var(--shadow-dropdown);
-  }
-
-  .placeholder-content p {
-    margin: 0 0 var(--spacing-sm);
-    color: var(--text-primary);
-    font-weight: 500;
-  }
-
-  .placeholder-actions {
-    margin-top: var(--spacing-lg);
-  }
 </style>

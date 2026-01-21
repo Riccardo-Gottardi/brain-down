@@ -1,5 +1,6 @@
 <script lang="ts">
   import '../app.css';
+  import ToastContainer from '$lib/components/ToastContainer.svelte';
   
   // Import children slot from Svelte 5 snippets
   let { children } = $props();
@@ -8,6 +9,8 @@
 <div class="app">
   {@render children()}
 </div>
+
+<ToastContainer />
 
 <style>
   .app {

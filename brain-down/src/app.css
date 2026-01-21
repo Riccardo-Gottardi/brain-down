@@ -81,8 +81,9 @@ p, h1, h2, h3, h4, h5, h6 {
   --text-on-accent: #ffffff;      /* Text on accent backgrounds */
   
   /* Status Colors */
-  --success: #4abe8a;
+  --success: #50b464;
   --success-bg: rgba(74, 190, 138, 0.15);
+  --warning: #e6b43c;
   --alert: #e86a6a;
   --alert-bg: rgba(232, 106, 106, 0.15);
   --alert-border: rgba(232, 106, 106, 0.3);
